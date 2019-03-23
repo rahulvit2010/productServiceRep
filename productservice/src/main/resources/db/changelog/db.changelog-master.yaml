@@ -1,0 +1,89 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: rahul bhandari
+      changes:
+        - createTable:
+            tableName: product_category
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: product_details
+            columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: description
+                    type: varchar(255)
+                    constraints:
+                       nullable: false
+                - column:
+                    name: price
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: sold_by
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: discount_percentage
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: discounted_money
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+                - column:
+                    name: brand_name
+                    type: varchar(255)
+                    constraints:
+                        nullable: false
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_category_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_product_category
+                    references: product_category(id)
+              - column:
+                  name: product_detail_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_product_detail
+                    references: product_details(id)
